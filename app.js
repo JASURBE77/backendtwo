@@ -17,13 +17,13 @@ const postROUTER = router
 app.use("/", postROUTER)
 
 const PORT = process.env.PORT || 8080;
-
+const HOST = '0.0.0.0';
 
 const ConnectedDB = async () => {
   try {
     await mongoose.connect(process.env.DB_URL).then(() => console.log('connected db'))
     app.listen(PORT, () =>
-      console.log(`server nechanchi portligi http://localhost:${PORT}`)
+      console.log(`server nechanchi portligi http://${HOST}:${PORT}`)
     );
   } catch (error) {
     console.log(`ulanishda yoki boshqa narsada xatolik bor : ${error}`);
