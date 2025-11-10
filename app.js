@@ -5,6 +5,7 @@ import dotenv from "dotenv"
 import router from "./router/post.routes.js";
 import cors from 'cors'
 import fileUpload from "express-fileupload";
+import auth from './router/auth.route.js'
 dotenv.config()
 const app = express();
 app.use(express.json());
@@ -13,8 +14,10 @@ app.use(fileUpload({}))
 
 app.use(cors())
 const postROUTER = router
+const authROUTER = auth
 
 app.use("/", postROUTER)
+app.use("/", authROUTER)
 
 const PORT = process.env.PORT || 8080;
 
@@ -24,7 +27,7 @@ const ConnectedDB = async () => {
     await mongoose.connect(process.env.DB_URL).then(() => console.log('connected db'))
     app.listen(PORT, () =>
       console.log(`server nechanchi portligi http://localhost:${PORT}`)
-    );
+    );  
   } catch (error) {
     console.log(`ulanishda yoki boshqa narsada xatolik bor : ${error}`);
     

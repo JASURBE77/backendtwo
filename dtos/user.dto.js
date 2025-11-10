@@ -1,0 +1,12 @@
+ class UserDto {
+    email;
+    id;
+    isAcitve
+
+    constructor(model) {
+        this.email = model.email;
+        this.id = model._id;
+        this.isAcitve = model.isAcitve;
+    }
+}
+export default UserDto;
